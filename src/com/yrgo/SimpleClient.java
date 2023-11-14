@@ -30,11 +30,6 @@ public class SimpleClient {
         Call newCall = new Call("Larry Wall called from Acme Corp");
         Call newCall2 = new Call("Larry is drunk talks jibbrisch");
 
-//        Action action1 = new Action("Call back Larry to ask how things are going", new GregorianCalendar(2016, 0, 0), "rac");
-//        Action action2 = new Action("Check our sales dept to make sure Larry is being tracked", new GregorianCalendar(2016, 0, 0), "rac");
-
-
-
         try{
             customerService.recordCall("CS03939", newCall);
             customerService.recordCall("CS03939", newCall2);
