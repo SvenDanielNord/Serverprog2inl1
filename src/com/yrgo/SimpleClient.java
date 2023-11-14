@@ -28,24 +28,24 @@ public class SimpleClient {
         customerService.newCustomer(new Customer("CS03939", "Acme", "Good Customer"));
 
         Call newCall = new Call("Larry Wall called from Acme Corp");
-        Action action1 = new Action("Call back Larry to ask how things are going", new GregorianCalendar(2016, 0, 0), "rac");
-        Action action2 = new Action("Check our sales dept to make sure Larry is being tracked", new GregorianCalendar(2016, 0, 0), "rac");
+        Call newCall2 = new Call("Larry is drunk talks jibbrisch");
 
-        List<Action> actions = new ArrayList<Action>();
-        actions.add(action1);
-        actions.add(action2);
+//        Action action1 = new Action("Call back Larry to ask how things are going", new GregorianCalendar(2016, 0, 0), "rac");
+//        Action action2 = new Action("Check our sales dept to make sure Larry is being tracked", new GregorianCalendar(2016, 0, 0), "rac");
+
+
 
         try{
-            callService.recordCall("CS03939", newCall, actions);
+            customerService.recordCall("CS03939", newCall);
+            customerService.recordCall("CS03939", newCall2);
+            System.out.println(customerService.getFullCustomerDetail("CS03939"));
+
+
         }catch (CustomerNotFoundException e){
             System.out.println("That customer doesn't exist");
         }
 
-        System.out.println("Here are the outstanding actions:");
-        Collection<Action> incompleteActions = diaryService.getAllIncompleteActions("rac");
-        for (Action next: incompleteActions){
-            System.out.println(next);
-        }
+
 
         container.close();
     }
