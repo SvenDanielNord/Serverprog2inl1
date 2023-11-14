@@ -15,7 +15,7 @@ public class CallHandlingServiceImpl implements CallHandlingService{
     private CustomerManagementService customerManagementService;
     private DiaryManagementService diaryManagementService;
 
-    public CallHandlingServiceImpl(CustomerManagementMockImpl customerManagementService, DiaryManagementService diaryManagementService) {
+    public CallHandlingServiceImpl(CustomerManagementService customerManagementService, DiaryManagementService diaryManagementService) {
         this.customerManagementService = customerManagementService;
         this.diaryManagementService = diaryManagementService;
     }
