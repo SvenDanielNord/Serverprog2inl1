@@ -6,13 +6,15 @@ import com.yrgo.services.customers.CustomerNotFoundException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-
+@Repository
 public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     private static final String DELETE_SQL = "DELETE FROM CUSTOMER WHERE CustomerId=?";
     private static final String UPDATE_SQL = "UPDATE CUSTOMER SET customerId=?, companyName=?, email=?, telephone=?, notes=? WHERE customerId=?";
@@ -28,7 +30,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     public CustomerDaoJdbcTemplateImpl(JdbcTemplate template) {
         this.template = template;
     }
-
+    @PostConstruct
     private void createTables() throws BadSqlGrammarException {
         try{
             this.template.update("CREATE TABLE CUSTOMER (customerId varchar(60), companyName VARCHAR(255), email VARCHAR(255), telephone VARCHAR(20), notes VARCHAR(255))");
