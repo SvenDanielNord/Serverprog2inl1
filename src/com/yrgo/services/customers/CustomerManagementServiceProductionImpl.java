@@ -16,9 +16,7 @@ public class CustomerManagementServiceProductionImpl implements CustomerManageme
     @Autowired
     private CustomerDao dao;
 
-    public void setDao(CustomerDao dao) {
-        this.dao = dao;
-    }
+
 
     @Override
     public void newCustomer(Customer newCustomer) {
