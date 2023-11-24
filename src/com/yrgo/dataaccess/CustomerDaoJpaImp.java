@@ -23,14 +23,16 @@ public class CustomerDaoJpaImp implements CustomerDao {
     @Override
     public Customer getById(String customerId) throws RecordNotFoundException, CustomerNotFoundException {
         try {
-//            return(Customer)em.createQuery("SELECT customerId, companyName, email, telephone, notes FROM CUSTOMER WHERE customerId=?").setParameter("customerId", customerId).getSingleResult();
-            Customer customer = em.find(Customer.class, customerId);
-            return customer;
+            return em.createQuery("SELECT customer FROM Customer as customer WHERE customer.customerId= :customerId", Customer.class).setParameter("customerId", customerId).getSingleResult();
+
+
 
         } catch (javax.persistence.NoResultException e) {
             throw new CustomerNotFoundException();
         }
     }
+
+
 
 
     @Override
