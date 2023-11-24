@@ -20,7 +20,7 @@ public class ActionDaoJpaImp implements ActionDao {
 
     @Override
     public List<Action> getIncompleteActions(String userId) {
-        return em.createQuery("SELECT * FROM ACTION WHERE OWNING_USER="+ userId +" AND COMPLETE=false" , Action.class).getResultList();
+        return em.createQuery("SELECT action FROM ACTION as action WHERE action.owningUser= :owningUser AND action.complete=false" , Action.class).setParameter("owningUser",userId).getResultList();
     }
 
     @Override

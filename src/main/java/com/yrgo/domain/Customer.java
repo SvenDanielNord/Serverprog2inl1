@@ -1,9 +1,8 @@
 package com.yrgo.domain;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
@@ -22,7 +21,7 @@ public class Customer {
 
 	private String notes;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Call> calls;
 
 	public Customer(String customerId, String companyName, String email,
@@ -45,7 +44,7 @@ public class Customer {
 
 
 	public String toString(){
-		return this.customerId + ": " + this.companyName + "\n" + this.calls;
+		return this.customerId + " : " + this.companyName + "\n" + this.calls;
 	}
 
 	public String getCustomerId() {
@@ -98,4 +97,17 @@ public class Customer {
 
 	// needed for JPA - ignore until then
 	public Customer() {}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Customer)) return false;
+		Customer customer = (Customer) o;
+		return customerId.equals(customer.customerId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(customerId);
+	}
 }

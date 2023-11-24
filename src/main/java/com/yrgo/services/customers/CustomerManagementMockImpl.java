@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.yrgo.domain.Call;
 import com.yrgo.domain.Customer;
-import org.springframework.stereotype.Component;
 
 
 public class CustomerManagementMockImpl implements CustomerManagementService {
