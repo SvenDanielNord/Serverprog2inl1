@@ -21,10 +21,7 @@ public class CallHandlingServiceImpl implements CallHandlingService{
     @Autowired
     private DiaryManagementService diaryManagementService;
 
-    public CallHandlingServiceImpl(CustomerManagementService customerManagementService, DiaryManagementService diaryManagementService) {
-        this.customerManagementService = customerManagementService;
-        this.diaryManagementService = diaryManagementService;
-    }
+
 
     @Override
     public void recordCall(String customerId, Call newCall, Collection<Action> actions) throws CustomerNotFoundException {

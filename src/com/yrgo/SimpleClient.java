@@ -25,7 +25,11 @@ public class SimpleClient {
         CallHandlingService callService = container.getBean(CallHandlingService.class);
         DiaryManagementService diaryService = container.getBean(DiaryManagementService.class);
 
-        customerService.newCustomer(new Customer("CS03939", "Acme", "Good Customer"));
+         customerService.newCustomer(new Customer("CS03939", "Acme", "Good Customer"));
+
+
+
+
 
         Call newCall = new Call("Larry Wall called from Acme Corp");
         Call newCall2 = new Call("Larry is drunk talks jibbrisch");
@@ -36,9 +40,18 @@ public class SimpleClient {
 
 
         try{
+            var customers = customerService.getAllCustomers();
+
+            for (Customer c: customers
+                 ) {
+                System.out.println(c.getCompanyName());
+            }
+
             customerService.recordCall("CS03939", newCall);
             customerService.recordCall("CS03939", newCall2);
+
             System.out.println(customerService.getFullCustomerDetail("CS03939"));
+
 
 
         }catch (CustomerNotFoundException e){
