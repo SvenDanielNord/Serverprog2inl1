@@ -31,6 +31,8 @@ public class CustomerDaoJpaImp implements CustomerDao {
     }
 
 
+
+
     @Override
     public List<Customer> getByName(String name) throws RecordNotFoundException {
         return em.createQuery("SELECT customer FROM Customer as customer WHERE customer.companyName= :companyName", Customer.class).setParameter("companyName", name).getResultList();

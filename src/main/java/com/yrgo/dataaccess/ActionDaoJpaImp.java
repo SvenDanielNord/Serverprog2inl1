@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 @Repository
 public class ActionDaoJpaImp implements ActionDao {
-    private static final String GET_INCOMPLETE_SQL = "SELECT ACTION_ID, DETAILS, COMPLETE, OWNING_USER, REQUIRED_BY FROM ACTION WHERE OWNING_USER=? AND COMPLETE=?";
+
     @PersistenceContext
     private EntityManager em;
     @Override
