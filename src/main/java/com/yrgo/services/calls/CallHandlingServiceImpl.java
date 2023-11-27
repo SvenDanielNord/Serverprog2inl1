@@ -2,8 +2,6 @@ package com.yrgo.services.calls;
 
 import com.yrgo.domain.Action;
 import com.yrgo.domain.Call;
-import com.yrgo.domain.Customer;
-import com.yrgo.services.customers.CustomerManagementMockImpl;
 import com.yrgo.services.customers.CustomerManagementService;
 import com.yrgo.services.customers.CustomerNotFoundException;
 import com.yrgo.services.diary.DiaryManagementService;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.List;
+
 @Transactional
 @Service("callService")
 public class CallHandlingServiceImpl implements CallHandlingService{

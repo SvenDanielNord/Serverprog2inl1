@@ -25,8 +25,6 @@ public class CustomerDaoJpaImp implements CustomerDao {
         try {
             return em.createQuery("SELECT customer FROM Customer as customer WHERE customer.customerId= :customerId", Customer.class).setParameter("customerId", customerId).getSingleResult();
 
-
-
         } catch (javax.persistence.NoResultException e) {
             throw new CustomerNotFoundException();
         }

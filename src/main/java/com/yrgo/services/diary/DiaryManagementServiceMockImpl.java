@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service("diaryManagementService")
-
 public class DiaryManagementServiceMockImpl implements DiaryManagementService {
+
 
 	private Set<Action>allActions= new HashSet<Action>();
 
