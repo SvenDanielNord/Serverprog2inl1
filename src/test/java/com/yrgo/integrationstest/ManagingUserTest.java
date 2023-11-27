@@ -10,10 +10,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration( {"/other-tiers.xml", "/datasource-test.xml" } )
+@ContextConfiguration({"/other-tiers.xml", "/datasource-test.xml"})
 @Transactional
 public class ManagingUserTest {
     @Autowired
@@ -21,7 +23,7 @@ public class ManagingUserTest {
 
 
     @Test
-    public void testCreateCustomer() {
+    public void testFindCustomer() {
         // arrange
 
         String customerId = "1234abcd";
@@ -32,7 +34,7 @@ public class ManagingUserTest {
         // act
         Customer foundCustomer = null;
         try {
-          foundCustomer = cm.findCustomerById(customerId);
+            foundCustomer = cm.findCustomerById(customerId);
             assertEquals(testCustomer, foundCustomer, "Wrong customer!");
         } catch (CustomerNotFoundException e) {
             fail("No customer was found when one should have been!");
@@ -42,6 +44,24 @@ public class ManagingUserTest {
 
 
 
+
+
+
+    @Test
+    void testGetAllCustomer(){
+        Customer testCustomer = new Customer("1234abcd", "Grabbarna Grus", "Annoying Customer");
+        Customer testCustomer2 = new Customer("9999dab", "Grabbarna Bus", "Nice Customer");
+        cm.newCustomer(testCustomer);
+        cm.newCustomer(testCustomer2);
+
+        try {
+            assertEquals(cm.getAllCustomers().size(),2);
+        }catch (CustomerNotFoundException e) {
+            fail("No customers was found when one should have been!");
+
+        }
+
+    }
 
 }
 
